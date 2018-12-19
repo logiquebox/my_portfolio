@@ -2,7 +2,7 @@
 .menu-btn {
   position: absolute;
   z-index: 3;
-  right: -100px;
+  right: -50px;
   top: 50px;
   cursor: pointer;
   @include easeOut;
@@ -76,7 +76,7 @@
   &-branding {
     background: $primary-color;
 
-    transform: rotate(-180deg);
+    transform: translate3d(0, -100px, 0);
     @include easeOut;
 
     &.show {
