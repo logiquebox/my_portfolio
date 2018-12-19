@@ -2,8 +2,8 @@
 .menu-btn {
   position: absolute;
   z-index: 3;
-  right: -1165px;
-  top: 35px;
+  right: -100px;
+  top: 50px;
   cursor: pointer;
   @include easeOut;
 
@@ -33,5 +33,99 @@
         transform: rotate(-45deg) translate(7px, -6px);
       }
     }
+  }
+}
+
+//Menu overlay
+
+.menu {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  visibility: hidden;
+  &.show {
+    visibility: visible;
+  }
+  &-branding,
+  &-nav {
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    width: 50%;
+    height: 100vh;
+    overflow: hidden;
+  }
+  &-nav {
+    margin: 0;
+    padding: 0;
+    background: darken($primary-color, 5);
+    list-style: none;
+    transform: translate3d(0, 100px, 0);
+    @include easeOut;
+
+    &.show {
+      //nav rotate
+
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  //Branding section
+  &-branding {
+    background: $primary-color;
+
+    transform: rotate(-180deg);
+    @include easeOut;
+
+    &.show {
+      //branding rotate
+      transform: translate3d(0, 0, 0);
+    }
+
+    .portrait {
+      width: 200px;
+      height: 200px;
+      background: url("../image/logic.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      border-radius: 50%;
+      border: 3px solid $secondary-color;
+    }
+  }
+  .nav-item {
+    transform: translate3d(600px, 0, 0);
+    @include easeOut;
+
+    &.show {
+      transform: translate3d(0, 0, 0);
+    }
+    &.current > a {
+      color: $secondary-color;
+    }
+  }
+  .nav-link {
+    display: inline-block;
+    position: relative;
+    font-size: 30px;
+    text-transform: uppercase;
+    padding: 1rem 0;
+    font-weight: 300;
+    color: #fff;
+    text-decoration: none;
+    @include easeOut;
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+}
+
+//Delay each nac-item slide by 0.1s
+
+@for $counter from 1 through 4 {
+  .nav-item:nth-child(#{$counter}) {
+    transition-delay: $counter * 0.1s;
   }
 }
