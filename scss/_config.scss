@@ -27,6 +27,14 @@ $opacity: 0.9;
   }
 }
 
+//function to set text color based on background color brightness
+@function set-text-color($color) {
+  @if (lightness($color) > 40) {
+    @return #000;
+  } @else {
+    @return #fff;
+  }
+}
 //Media Query Mixins
 
 @mixin mediaSm {
